@@ -1,0 +1,62 @@
+services:
+ 
+  mongodb:
+    image: mongo:4.4
+    container_name: smart-task-mongodb
+    ports:
+      - "27017:27017"
+ 
+  auth-service:
+    image: smart-task-auth-service
+    container_name: smart-task-auth-service
+    ports:
+      - "5001:5001"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/authdb
+      JWT_SECRET: Change_me
+ 
+  task-service:
+    image: smart-task-task-service
+    container_name: smart-task-task-service
+    ports:
+      - "5002:5002"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/taskdb
+      JWT_SECRET: Change_me
+ 
+  notification-service:
+    image: smart-task-notification-service
+    container_name: smart-task-notification-service
+    ports:
+      - "5003:5003"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/notificationdb
+      JWT_SECRET: Change_me
+ 
+  report-service:
+    image: smart-task-report-service
+    container_name: smart-task-report-service
+    ports:
+      - "5004:5004"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/reportdb
+      JWT_SECRET: Change_me
+ 
+  api-gateway:
+    image: smart-task-api-gateway
+    container_name: smart-task-api-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      AUTH_SERVICE_URL: http://auth-service:5001
+      TASK_SERVICE_URL: http://task-service:5002
+      JWT_SECRET: Change_me
+
+  frontend:
+    image: frontend-smart-task
+    container_name: smart-task-frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - api-gateway  

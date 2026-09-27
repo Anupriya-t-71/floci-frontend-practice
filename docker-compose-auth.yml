@@ -7,7 +7,7 @@ services:
       - "27017:27017"
  
   auth-service:
-    image: smart-task-auth-service:latest
+    image: anupriyathavasiraj/smart-task-auth-service:latest
     container_name: smart-task-auth-service
     ports:
       - "5001:5001"
@@ -16,7 +16,7 @@ services:
       JWT_SECRET: Change_me
  
   task-service:
-    image: smart-task-task-service:latest
+    image: anupriyathavasiraj/smart-task-task-service:latest
     container_name: smart-task-task-service
     ports:
       - "5002:5002"
@@ -25,7 +25,7 @@ services:
       JWT_SECRET: Change_me
  
   notification-service:
-    image: smart-task-notification-service:latest
+    image: anupriyathavasiraj/smart-task-notification-service:latest
     container_name: smart-task-notification-service
     ports:
       - "5003:5003"
@@ -34,7 +34,7 @@ services:
       JWT_SECRET: Change_me
  
   report-service:
-    image: smart-task-report-service:latest
+    image: anupriyathavasiraj/smart-task-report-service:latest
     container_name: smart-task-report-service
     ports:
       - "5004:5004"
@@ -43,7 +43,7 @@ services:
       JWT_SECRET: Change_me
  
   api-gateway:
-    image: smart-task-api-gateway:latest
+    image: anupriyathavasiraj/smart-task-api-gateway:latest
     container_name: smart-task-api-gateway
     ports:
       - "5000:5000"
@@ -54,7 +54,7 @@ services:
       JWT_SECRET: Change_me
 
   frontend:
-    image: frontend-smart-task:latest
+    image: anupriyathavasiraj/frontend-smart-task:latest
     container_name: smart-task-frontend
     ports:
       - "8081:80"

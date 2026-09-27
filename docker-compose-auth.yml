@@ -14,6 +14,7 @@ services:
     environment:
       MONGO_URI: mongodb://mongodb:27017/authdb
       JWT_SECRET: Change_me
+      JWT_EXPIRES_IN: 1h
  
   task-service:
     image: anupriyathavasiraj/smart-task-task-service:latest

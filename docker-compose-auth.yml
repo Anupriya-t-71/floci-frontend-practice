@@ -54,10 +54,4 @@ services:
       TASK_SERVICE_URL: http://task-service:5002
       JWT_SECRET: Change_me
 
-  frontend:
-    image: anupriyathavasiraj/frontend-smart-task:latest
-    container_name: smart-task-frontend
-    ports:
-      - "8081:80"
-    depends_on:
-      - api-gateway  
+   
